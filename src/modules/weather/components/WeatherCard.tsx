@@ -19,8 +19,8 @@ export const WeatherCard = ({ day, temperature_max, temperature_min, weather_cod
       <Image style={styles.weatherIcon} source={{uri: icon }} />
       <Text style={styles.day}>{dayName}</Text>
       <View style={styles.temperatureContainer}>
-        <Text style={styles.temperature}>{temperature_max}°</Text>
-        <Text style={styles.temperature}>{temperature_min}°</Text>
+        <Text style={styles.temperature}>{Math.round(temperature_max)}°</Text>
+        <Text style={styles.temperature}>{Math.round(temperature_min)}°</Text>
       </View>
     </View>
   );

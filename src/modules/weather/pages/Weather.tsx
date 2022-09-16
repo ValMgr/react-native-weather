@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { fetchWeather } from '@core/services/api';
 import { useWeather } from '@modules/weather/providers/WeatherProvider';
@@ -7,9 +8,16 @@ import { WeatherCard } from '@modules/weather/components/WeatherCard';
 import { DAYS_TO_SHOW } from '@core/constants/api';
 
 export const Weather = () => {
-  const { location } = useWeather();
+  const { location, city } = useWeather();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [parsedWeather, setParsedWeather] = useState<any | null>(null);
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    if(city)
+      navigation.setOptions({ title: city });
+  }, [city, navigation]);
+
 
   useEffect(() => {
     (async () => {
