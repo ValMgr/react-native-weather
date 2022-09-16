@@ -6,6 +6,8 @@ type WeatherContextType = {
     lng: number | null;
   };
   setLocation: ({ lat, lng }: { lat: number; lng: number }) => void;
+  city: string | null;
+  setCity: (city: string) => void;
 };
 
 const WeatherContext = createContext<WeatherContextType>({
@@ -14,6 +16,8 @@ const WeatherContext = createContext<WeatherContextType>({
     lng: null,
   },
   setLocation: () => {},
+  city: null,
+  setCity: () => {},
 });
 
 interface IProps {
@@ -25,8 +29,9 @@ const WeatherProvider = ({ children }: IProps) => {
     lat: null,
     lng: null,
   });
+  const [city, setCity] = useState<string | null>(null);
 
-  const values = useMemo(() => ({ location, setLocation }), [location, setLocation]);
+  const values = useMemo(() => ({ location, setLocation, city, setCity }), [location, setLocation, city, setCity]);
 
   return <WeatherContext.Provider value={values}>{children}</WeatherContext.Provider>;
 };

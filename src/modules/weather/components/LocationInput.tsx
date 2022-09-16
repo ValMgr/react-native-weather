@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { View, TextInput, Button, StyleSheet, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -7,11 +7,10 @@ import { useWeather } from '@modules/weather/providers/WeatherProvider';
 
 type Nav = {
   navigate: (screen: string) => void;
-}
+};
 
 export const LocationInput = () => {
-  const { setLocation } = useWeather();
-  const [city, setCity] = useState<string>('');
+  const { setLocation, city, setCity } = useWeather();
   const navigation = useNavigation<Nav>();
 
   const handleLocationChange = useCallback(
@@ -22,10 +21,12 @@ export const LocationInput = () => {
   );
 
   const handleLocationSubmit = useCallback(() => {
-    geocodeCity(city).then((location) => {
-      setLocation(location);
-      navigation.navigate('Weather');
-    });
+    if (city) {
+      geocodeCity(city).then((location) => {
+        setLocation(location);
+        navigation.navigate('Weather');
+      });
+    }
   }, [city]);
 
   return (
