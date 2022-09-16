@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export const Header = () => {
   return (
     <View style={styles.header} pointerEvents={'none'}>
-      <Text style={styles.headerText}>.Weather</Text>
+      <Text style={styles.headerText}>dotWeather</Text>
       {/* <Text style={styles.headerText}>v0.1.0</Text> */}
     </View>
   );

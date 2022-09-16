@@ -1,13 +1,22 @@
-import { METEO_API_URL, GOOGLE_API_URL, GOOGLE_API_KEY } from '@core/constants/api';
+import { METEO_API_URL, GOOGLE_API_URL, GOOGLE_API_KEY, DAYS_TO_SHOW } from '@core/constants/api';
 
-export const fetchData = async (path: string, method: string = 'GET'): Promise<any> => {
+export const fetchWeather = async (
+  location: { lat: number | null; lng: number | null },
+  method: string = 'GET',
+): Promise<any> => {
   const headers = new Headers();
   headers.append('Content-Type', 'application/json');
 
-  const data = fetch(`${METEO_API_URL}/${path}`, {
-    method,
-    headers,
-  })
+  const start_date = new Date().toISOString().slice(0, 10);
+  const end_date = new Date(new Date().setDate(new Date().getDate() + (DAYS_TO_SHOW - 1))).toISOString().slice(0, 10);
+
+  const data = fetch(
+    `${METEO_API_URL}/forecast?latitude=${location.lat}&longitude=${location.lng}&timezone=auto&daily=weathercode,temperature_2m_max,temperature_2m_min&start_date=${start_date}&end_date=${end_date}`,
+    {
+      method,
+      headers,
+    },
+  )
     .then((response) => response.json())
     .catch((error) => {
       throw new Error(error.message);
