@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState, useMemo } from 'react';
+import { useContext, createContext, useState, useMemo } from 'react';
 
 type WeatherContextType = {
   location: {
