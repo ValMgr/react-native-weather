@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { View, TextInput, Button, StyleSheet, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 

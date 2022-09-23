@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WeatherCard renders correctly 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderRadius": 10,
+      "display": "flex",
+      "flexDirection": "row",
+      "gap": 10,
+      "margin": 10,
+      "padding": 10,
+    }
+  }
+>
+  <Image
+    source={
+      {
+        "uri": "https://help.apple.com/assets/6222428998C2CE34C75A5252/6222428B98C2CE34C75A5267/fr_FR/35c778528f79f2aa038b07526447f606.png",
+      }
+    }
+    style={
+      {
+        "height": 50,
+        "width": 50,
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "marginHorizontal": 10,
+      }
+    }
+  >
+    Aujourd'hui
+  </Text>
+  <View
+    style={
+      {
+        "alignItems": "flex-end",
+        "display": "flex",
+        "flex": 1,
+        "flexDirection": "column",
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "fontSize": 20,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      22
+      °
+    </Text>
+    <Text
+      style={
+        {
+          "fontSize": 20,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      12
+      °
+    </Text>
+  </View>
+</View>
+`;
