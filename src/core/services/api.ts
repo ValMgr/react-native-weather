@@ -10,7 +10,7 @@ export const fetchWeather = async (
   const start_date = new Date().toISOString().slice(0, 10);
   const end_date = new Date(new Date().setDate(new Date().getDate() + (DAYS_TO_SHOW - 1))).toISOString().slice(0, 10);
 
-  const data = fetch(
+  const data: Promise<any> = fetch(
     `${METEO_API_URL}/forecast?latitude=${location.lat}&longitude=${location.lng}&timezone=auto&daily=weathercode,temperature_2m_max,temperature_2m_min&start_date=${start_date}&end_date=${end_date}`,
     {
       method,
