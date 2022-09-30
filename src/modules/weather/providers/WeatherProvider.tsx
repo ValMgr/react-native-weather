@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, useMemo } from 'react';
+import { Context, useContext, createContext, useState, useMemo } from 'react';
 
 type WeatherContextType = {
   location: {
@@ -10,7 +10,7 @@ type WeatherContextType = {
   setCity: (city: string) => void;
 };
 
-const WeatherContext = createContext<WeatherContextType>({
+const WeatherContext: Context<WeatherContextType> = createContext<WeatherContextType>({
   location: {
     lat: null,
     lng: null,
@@ -24,7 +24,7 @@ interface IProps {
   children: React.ReactNode;
 }
 
-const WeatherProvider = ({ children }: IProps) => {
+const WeatherProvider = ({ children }: IProps): JSX.Element => {
   const [location, setLocation] = useState<{ lat: number | null; lng: number | null }>({
     lat: null,
     lng: null,

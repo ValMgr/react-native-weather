@@ -7,20 +7,20 @@ import { useWeather } from '@modules/weather/providers/WeatherProvider';
 import { WeatherCard } from '@modules/weather/components/WeatherCard';
 import { DAYS_TO_SHOW } from '@core/constants/api';
 
-export const Weather = () => {
+export const Weather = (): JSX.Element => {
   const { location, city } = useWeather();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [parsedWeather, setParsedWeather] = useState<any | null>(null);
   const navigation = useNavigation();
 
-  useEffect(() => {
-    if(city)
+  useEffect((): void => {
+    if (city) {
       navigation.setOptions({ title: city });
+    }
   }, [city, navigation]);
 
-
-  useEffect(() => {
-    (async () => {
+  useEffect((): void => {
+    (async (): Promise<void> => {
       if (isLoading && location) {
         const data = await fetchWeather(location);
         const parsedData = [];
@@ -38,7 +38,7 @@ export const Weather = () => {
     })();
   }, [location]);
 
-  const renderWeatherList = useMemo(() => {
+  const renderWeatherList = useMemo((): Array<JSX.Element> | null => {
     if (!parsedWeather) {
       return null;
     }

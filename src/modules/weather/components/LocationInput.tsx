@@ -9,18 +9,18 @@ type Nav = {
   navigate: (screen: string) => void;
 };
 
-export const LocationInput = () => {
+export const LocationInput = (): JSX.Element => {
   const { setLocation, city, setCity } = useWeather();
   const navigation = useNavigation<Nav>();
 
   const handleLocationChange = useCallback(
-    (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    (e: NativeSyntheticEvent<TextInputChangeEventData>): void => {
       setCity(e.nativeEvent.text);
     },
     [setCity],
   );
 
-  const handleLocationSubmit = useCallback(() => {
+  const handleLocationSubmit = useCallback((): void => {
     if (city) {
       geocodeCity(city).then((location) => {
         setLocation(location);

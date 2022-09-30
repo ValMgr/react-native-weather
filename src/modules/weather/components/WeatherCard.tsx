@@ -10,9 +10,9 @@ interface IProps {
   weather_code: number;
 }
 
-export const WeatherCard = ({ day, temperature_max, temperature_min, weather_code }: IProps) => {
-  const icon = useMemo(() => getWeatherIcon(weather_code), [weather_code]);
-  const dayName = useMemo(() => getDay(day), [day]);
+export const WeatherCard = ({ day, temperature_max, temperature_min, weather_code }: IProps): JSX.Element => {
+  const icon = useMemo((): string => getWeatherIcon(weather_code), [weather_code]);
+  const dayName = useMemo((): string => getDay(day), [day]);
 
   return (
     <View style={styles.card}>

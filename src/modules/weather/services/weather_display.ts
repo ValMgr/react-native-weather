@@ -60,9 +60,9 @@ export const getDay = (day: number): string => {
     return 'Aujourd\'hui';
   }
 
-  const date = new Date();
+  const date: Date = new Date();
   date.setDate(date.getDate() + day);
-  const dayOfWeek = date.getDay();
+  const dayOfWeek: number = date.getDay();
 
   switch (dayOfWeek) {
     case 0:
